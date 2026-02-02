@@ -1,0 +1,99 @@
+import { motion } from "framer-motion";
+import logo from "@/assets/logo_rubberducklab.png";
+import ParticleCanvas from "./ParticleCanvas";
+
+const skills = [
+  "[AI INTEGRATION]",
+  "[DATA SCIENCE]",
+  "[FULL STACK]",
+  "[PYTHON]",
+  "[REACT]",
+  "[CLOUD]",
+];
+
+const HeroSection = () => {
+  return (
+    <header className="relative min-h-screen w-full flex items-center justify-center overflow-hidden bg-background">
+      <ParticleCanvas id="hero-canvas" />
+
+      <div className="section-label">[ 00. PROFILE ]</div>
+
+      <div className="relative z-10 w-full max-w-6xl px-6 grid md:grid-cols-[auto_1fr] gap-12 md:gap-24 items-center">
+        {/* Logo */}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.8, filter: "blur(10px)" }}
+          animate={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
+          transition={{ duration: 1.2, ease: [0.23, 1, 0.32, 1] }}
+          className="order-1 md:order-none flex justify-center md:justify-start"
+        >
+          <div className="w-40 h-40 md:w-64 md:h-64 rounded-full border border-border p-1 relative group">
+            <div className="w-full h-full rounded-full overflow-hidden bg-card/50 backdrop-blur-sm relative z-10 flex items-center justify-center">
+              <img
+                src={logo}
+                alt="RubberDuck Lab Logo"
+                className="w-3/4 h-3/4 object-contain animate-float"
+              />
+            </div>
+            {/* Glow effect */}
+            <div className="absolute inset-0 rounded-full bg-primary/10 blur-2xl scale-110 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+          </div>
+        </motion.div>
+
+        {/* Text Content */}
+        <div className="order-2 md:order-none text-center md:text-left">
+          <motion.h1
+            initial={{ opacity: 0, y: 60 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1.2, ease: [0.23, 1, 0.32, 1] }}
+            className="font-display text-5xl md:text-7xl lg:text-8xl font-semibold tracking-tighter leading-[0.9] mb-6"
+          >
+            RubberDuck
+            <br />
+            <span className="text-primary">Lab</span>
+          </motion.h1>
+
+          <motion.p
+            initial={{ opacity: 0, y: 60 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{
+              duration: 1.2,
+              ease: [0.23, 1, 0.32, 1],
+              delay: 0.1,
+            }}
+            className="text-lg text-muted-foreground leading-relaxed mb-10 max-w-2xl mx-auto md:mx-0"
+          >
+            We craft digital experiences focused on AI, Data Science and Full
+            Stack Engineering. Transforming complex challenges into elegant
+            solutions.
+          </motion.p>
+
+          {/* Skills Pills */}
+          <motion.div
+            initial={{ opacity: 0, y: 60 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{
+              duration: 1.2,
+              ease: [0.23, 1, 0.32, 1],
+              delay: 0.2,
+            }}
+            className="flex flex-wrap justify-center md:justify-start gap-2"
+          >
+            {skills.map((skill, index) => (
+              <motion.div
+                key={skill}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.3 + index * 0.05 }}
+                className="skill-pill hoverable cursor-default"
+              >
+                {skill}
+              </motion.div>
+            ))}
+          </motion.div>
+        </div>
+      </div>
+    </header>
+  );
+};
+
+export default HeroSection;
