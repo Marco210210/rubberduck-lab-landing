@@ -6,16 +6,19 @@ const team = [
     name: "Giammario Paolella",
     role: "Project Manager",
     bio: "Gestione end-to-end di progetti digitali. Trasforma esigenze complesse in roadmap concrete, garantendo un processo di delivery strutturato e trasparente.",
+    image: "/giammario-paolella.png",
   },
   {
     name: "Edmondo Battipaglia",
     role: "Full Stack Dev & AI Specialist",
     bio: "Ingegnere informatico focalizzato su architetture scalabili. Unisce lo sviluppo web moderno con l'integrazione di modelli di Intelligenza Artificiale.",
+    image: "/edmondo-battipaglia.jpg",
   },
   {
     name: "Marco Di Maio",
     role: "Data Scientist & ML Engineer",
     bio: "Sviluppa soluzioni data-driven solide e utilizzabili. Esperto nel trasformare dati complessi in dashboard chiare e strumenti di supporto decisionale.",
+    image: "/marco-dimaio.jpg",
   },
 ];
 
@@ -64,8 +67,16 @@ const TeamSection = () => {
               className="team-card text-center hoverable"
             >
               {/* Avatar */}
-              <div className="w-20 h-20 mx-auto mb-6 rounded-full border-2 border-primary/30 bg-secondary flex items-center justify-center group-hover:border-primary transition-colors">
-                <User className="w-8 h-8 text-primary" />
+              <div className="w-20 h-20 mx-auto mb-6 rounded-full border-2 border-primary/30 bg-secondary flex items-center justify-center group-hover:border-primary transition-colors overflow-hidden">
+                {member.image ? (
+                  <img 
+                    src={member.image} 
+                    alt={member.name}
+                    className="w-full h-full object-cover"
+                  />
+                ) : (
+                  <User className="w-8 h-8 text-primary" />
+                )}
               </div>
 
               {/* Name */}

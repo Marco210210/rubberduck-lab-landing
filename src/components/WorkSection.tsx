@@ -14,8 +14,7 @@ const projects = [
     category: "Reinforcement Learning",
     description:
       "DDQN/PPO agent playing Super Mario using YOLOv5 for real-time obstacle recognition.",
-    image:
-      "https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=800&auto=format",
+    video: "/watermarked-32999615-a899-4630-8e04-fe1eb0b18653.mp4",
   },
   {
     title: "SportTech DB",
@@ -75,11 +74,22 @@ const WorkSection = () => {
               index % 3 === 1 ? "md:mt-12" : ""
             }`}
           >
-            <img
-              src={project.image}
-              alt={project.title}
-              className="absolute inset-0 w-full h-full object-cover"
-            />
+            {project.video ? (
+              <video
+                src={project.video}
+                autoPlay
+                loop
+                muted
+                playsInline
+                className="absolute inset-0 w-full h-full object-cover"
+              />
+            ) : (
+              <img
+                src={project.image}
+                alt={project.title}
+                className="absolute inset-0 w-full h-full object-cover"
+              />
+            )}
             <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent" />
 
             <div className="absolute bottom-6 left-6 right-6 z-30">
