@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { useRef } from "react";
 
 const projects = [
   {
@@ -14,7 +15,7 @@ const projects = [
     category: "Reinforcement Learning",
     description:
       "DDQN/PPO agent playing Super Mario using YOLOv5 for real-time obstacle recognition.",
-    video: "/watermarked-32999615-a899-4630-8e04-fe1eb0b18653.mp4",
+    video: "/Mario_Bros_Video_Generation.mp4",
   },
   {
     title: "SportTech DB",
@@ -50,6 +51,72 @@ const projects = [
   },
 ];
 
+const ProjectCard = ({ project, index }: { project: typeof projects[0]; index: number }) => {
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  const handleMouseEnter = () => {
+    if (videoRef.current) {
+      videoRef.current.play();
+    }
+  };
+
+  const handleMouseLeave = () => {
+    if (videoRef.current) {
+      videoRef.current.pause();
+      videoRef.current.currentTime = 0;
+    }
+  };
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 60 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{
+        duration: 0.8,
+        delay: index * 0.1,
+        ease: [0.23, 1, 0.32, 1],
+      }}
+      className={`project-card group cursor-pointer hoverable aspect-[3/4] ${
+        index % 3 === 1 ? "md:mt-12" : ""
+      }`}
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
+    >
+      {project.video ? (
+        <video
+          ref={videoRef}
+          src={project.video}
+          loop
+          muted
+          playsInline
+          aria-label={project.title}
+          className="absolute inset-0 w-full h-full object-cover"
+        />
+      ) : (
+        <img
+          src={project.image}
+          alt={project.title}
+          className="absolute inset-0 w-full h-full object-cover"
+        />
+      )}
+      <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent" />
+
+      <div className="absolute bottom-6 left-6 right-6 z-30">
+        <span className="text-xs text-primary font-medium tracking-wider uppercase mb-2 block">
+          {project.category}
+        </span>
+        <h3 className="text-xl font-display font-semibold text-white mb-2">
+          {project.title}
+        </h3>
+        <p className="text-sm text-white/70 leading-relaxed opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+          {project.description}
+        </p>
+      </div>
+    </motion.div>
+  );
+};
+
 const WorkSection = () => {
   return (
     <section
@@ -60,50 +127,7 @@ const WorkSection = () => {
 
       <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 pt-12">
         {projects.map((project, index) => (
-          <motion.div
-            key={project.title}
-            initial={{ opacity: 0, y: 60 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{
-              duration: 0.8,
-              delay: index * 0.1,
-              ease: [0.23, 1, 0.32, 1],
-            }}
-            className={`project-card group cursor-pointer hoverable aspect-[3/4] ${
-              index % 3 === 1 ? "md:mt-12" : ""
-            }`}
-          >
-            {project.video ? (
-              <video
-                src={project.video}
-                autoPlay
-                loop
-                muted
-                playsInline
-                className="absolute inset-0 w-full h-full object-cover"
-              />
-            ) : (
-              <img
-                src={project.image}
-                alt={project.title}
-                className="absolute inset-0 w-full h-full object-cover"
-              />
-            )}
-            <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent" />
-
-            <div className="absolute bottom-6 left-6 right-6 z-30">
-              <span className="text-xs text-primary font-medium tracking-wider uppercase mb-2 block">
-                {project.category}
-              </span>
-              <h3 className="text-xl font-display font-semibold text-white mb-2">
-                {project.title}
-              </h3>
-              <p className="text-sm text-white/70 leading-relaxed opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                {project.description}
-              </p>
-            </div>
-          </motion.div>
+          <ProjectCard key={project.title} project={project} index={index} />
         ))}
       </div>
     </section>
