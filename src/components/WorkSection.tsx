@@ -16,6 +16,7 @@ const projects = [
     description:
       "DDQN/PPO agent playing Super Mario using YOLOv5 for real-time obstacle recognition.",
     video: "/Mario_Bros_Video_Generation.mp4",
+    poster: "/mario-poster.png",
   },
   {
     title: "SportTech DB",
@@ -87,6 +88,8 @@ const ProjectCard = ({ project, index }: { project: typeof projects[0]; index: n
         <video
           ref={videoRef}
           src={project.video}
+          poster={project.poster}
+          preload="metadata"
           loop
           muted
           playsInline
