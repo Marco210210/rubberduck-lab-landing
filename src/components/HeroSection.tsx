@@ -49,7 +49,7 @@ const HeroSection = () => {
           >
             RubberDuck
             <br />
-            <span className="text-primary">Lab</span>
+            <span className="text-gradient">Lab</span>
           </motion.h1>
 
           <motion.p
@@ -97,3 +97,35 @@ const HeroSection = () => {
 };
 
 export default HeroSection;
+
+// Add shimmer animation style
+const style = document.createElement('style');
+style.textContent = `
+  .text-gradient {
+    background: linear-gradient(
+      90deg,
+      hsl(var(--primary)),
+      hsl(var(--primary) / 0.8),
+      #fff,
+      hsl(var(--primary) / 0.8),
+      hsl(var(--primary))
+    );
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: shimmer 3s linear infinite;
+  }
+  @keyframes shimmer {
+    0% {
+      background-position: 0% center;
+    }
+    100% {
+      background-position: 200% center;
+    }
+  }
+`;
+if (!document.head.querySelector('style[data-shimmer]')) {
+  style.setAttribute('data-shimmer', 'true');
+  document.head.appendChild(style);
+}

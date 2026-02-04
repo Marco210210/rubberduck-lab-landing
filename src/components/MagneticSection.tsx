@@ -1,7 +1,8 @@
-import { motion } from "framer-motion";
-import { useRef, useState } from "react";
 
-const MagneticCircle = ({ text }: { text: string }) => {
+import { motion } from "framer-motion";
+import { useRef, useState, useEffect } from "react";
+
+const MagneticCircle = ({ text, onQuack }: { text: string; onQuack?: () => void }) => {
   const ref = useRef<HTMLDivElement>(null);
   const [position, setPosition] = useState({ x: 0, y: 0 });
 
@@ -17,11 +18,18 @@ const MagneticCircle = ({ text }: { text: string }) => {
     setPosition({ x: 0, y: 0 });
   };
 
+  const handleClick = () => {
+    if (onQuack) {
+      onQuack();
+    }
+  };
+
   return (
     <div
       ref={ref}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
+      onClick={handleClick}
       className="magnetic-wrap hoverable"
     >
       <motion.div
@@ -38,6 +46,65 @@ const MagneticCircle = ({ text }: { text: string }) => {
 };
 
 const MagneticSection = () => {
+  const audioContextRef = useRef<AudioContext | null>(null);
+  const audioBufferRef = useRef<AudioBuffer | null>(null);
+
+  useEffect(() => {
+    // Initialize Web Audio API for zero-latency playback
+    const initAudio = async () => {
+      try {
+        // Create AudioContext
+        const audioContext = new (window.AudioContext || (window as any).webkitAudioContext)();
+        audioContextRef.current = audioContext;
+
+        // Fetch and decode audio file
+        const response = await fetch('/Duck%20Quack%20sound%20effect%20%20%20No%20Copyright.mp3');
+        const arrayBuffer = await response.arrayBuffer();
+        const audioBuffer = await audioContext.decodeAudioData(arrayBuffer);
+        audioBufferRef.current = audioBuffer;
+      } catch (error) {
+        console.error('Error initializing audio:', error);
+      }
+    };
+
+    initAudio();
+
+    // Cleanup
+    return () => {
+      if (audioContextRef.current) {
+        audioContextRef.current.close();
+      }
+    };
+  }, []);
+
+  const playDuckSound = () => {
+    if (!audioContextRef.current || !audioBufferRef.current) return;
+
+    try {
+      // Resume context if suspended (browser autoplay policy)
+      if (audioContextRef.current.state === 'suspended') {
+        audioContextRef.current.resume();
+      }
+
+      // Create a new source node for each play (required for Web Audio API)
+      const source = audioContextRef.current.createBufferSource();
+      source.buffer = audioBufferRef.current;
+      
+      // Create gain node for volume control
+      const gainNode = audioContextRef.current.createGain();
+      gainNode.gain.value = 0.5; // 50% volume
+      
+      // Connect: source -> gain -> destination
+      source.connect(gainNode);
+      gainNode.connect(audioContextRef.current.destination);
+      
+      // Play immediately - this should be instant!
+      source.start(0);
+    } catch (error) {
+      console.error('Error playing duck sound:', error);
+    }
+  };
+
   return (
     <section className="py-32 bg-background flex flex-col items-center justify-center border-t border-border relative overflow-hidden">
       <div className="section-label">[ 03. PHYSICS & TRAIL ]</div>
@@ -54,7 +121,7 @@ const MagneticSection = () => {
       </motion.div>
 
       <div className="relative z-10 flex flex-wrap justify-center gap-12">
-        <MagneticCircle text="QUACK?" />
+        <MagneticCircle text="QUACK?" onQuack={playDuckSound} />
         <MagneticCircle text="PULL ME" />
       </div>
     </section>

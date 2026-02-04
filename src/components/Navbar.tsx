@@ -53,12 +53,6 @@ const Navbar = () => {
             >
               THE LAB
             </a>
-            <a
-              href="#contact"
-              className="hoverable opacity-60 hover:opacity-100 hover:text-primary transition-all duration-300"
-            >
-              CONTACT
-            </a>
           </div>
 
           <a
