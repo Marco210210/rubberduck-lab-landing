@@ -22,11 +22,20 @@ const Index = () => {
       {/* Main Content */}
       <main>
         <HeroSection />
-        <WorkSection />
-        <TeamSection />
-        {/* <MagneticSection /> */}
+
+        {/* Cosa facciamo e cosa possiamo vendere */}
         <ManifestoSection />
+
+        {/* Prova concreta delle nostre capacità */}
+        <WorkSection />
+
+        {/* Chi c’è dietro */}
+        <TeamSection />
+
+        {/* Separatore visivo / ritmo */}
         <MarqueeSection />
+
+        {/* CTA finale */}
         <ContactSection />
       </main>
 
