@@ -311,3 +311,14 @@ a:hover, button:hover {
 .animate-fade-in-scale {
   animation: fadeInScale 1.2s cubic-bezier(0.23, 1, 0.32, 1) forwards;
 }
+
+/* === Mobile-like scroll (no visible scrollbar) === */
+.hide-scrollbar {
+  scrollbar-width: none;       /* Firefox */
+  -ms-overflow-style: none;    /* IE 10+ */
+}
+
+.hide-scrollbar::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+}

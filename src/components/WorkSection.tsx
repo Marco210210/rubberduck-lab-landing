@@ -27,111 +27,112 @@ const projects = [
   },
   {
     title: "Super Mario Bros AI",
-    category: "Reinforcement Learning",
+    category: "Intelligenza Artificiale Applicata",
     description:
-      "DDQN/PPO agent playing Super Mario using YOLOv5 for real-time obstacle recognition.",
+      "Un agente di intelligenza artificiale capace di imparare a giocare autonomamente a Super Mario Bros, combinando Reinforcement Learning e Computer Vision per prendere decisioni in tempo reale.",
     detailedDescription:
-      "Progetto avanzato di intelligenza artificiale applicata al gaming, che combina Reinforcement Learning (con algoritmi DDQN e PPO) e Computer Vision (YOLOv5) per addestrare un agente capace di completare un livello del gioco Super Mario Bros automatizzando decisioni basate sia sulla percezione visiva sia sull'apprendimento dall'ambiente.",
+      "Progetto di intelligenza artificiale che mostra come un agente possa imparare a giocare autonomamente a Super Mario Bros osservando esclusivamente lo schermo e apprendendo dall’esperienza. Il sistema trasforma immagini di gioco in azioni concrete grazie a tecniche avanzate di Reinforcement Learning e Computer Vision, sviluppando una strategia di gioco senza regole predefinite.",
     problem:
-      "Nel campo del reinforcement learning applicato ai videogiochi, addestrare un agente che completa autonomamente un livello di Super Mario Bros è un compito complesso per tre motivi principali: 1) Alto spazio di stati e azioni: lo stato dell'agente è composto da immagini di gioco ad alta dimensionalità e la combinazione di movimenti possibili è vasta. 2) Apprendimento sequenziale: l'agente deve imparare una policy ottimale che massimizzi la ricompensa accumulata attraverso una sequenza temporale di decisioni. 3) Percezione del contesto: usare solo dati grezzi dallo screen non cattura direttamente strutture semantiche utili (es. ostacoli, nemici o gap).",
+      "Insegnare a un’intelligenza artificiale a giocare a Super Mario Bros è una sfida estremamente complessa. Il gioco richiede tempismo preciso, decisioni istantanee e comprensione visiva dell’ambiente: piattaforme, nemici, ostacoli e salti devono essere interpretati in tempo reale. Si tratta di un contesto dinamico e imprevedibile, dove ogni errore ha conseguenze immediate.",
     solution:
-      "Il progetto implementa e confronta tre approcci principali: DDQN (Double Deep Q-Network) che estende Q-learning riducendo l'overestimation del valore delle azioni; PPO (Proximal Policy Optimization), algoritmo policy gradient robusto che bilancia esplorazione ed exploitation; e PPO + YOLOv5 che integra il modello di object detection per fornire feature visive semantiche. La combinazione delle tecniche ha permesso di addestrare agenti che raggiungono completamenti di livello (circa 54 vittorie dopo 10M passi di training con PPO).",
+      "Il progetto affronta questa sfida sviluppando un agente AI capace di apprendere direttamente dall’esperienza, migliorando progressivamente il proprio comportamento partita dopo partita. Attraverso diversi approcci di Reinforcement Learning, l’agente impara quando correre, saltare o fermarsi. In una fase avanzata, l’integrazione della Computer Vision tramite YOLOv5 consente all’AI di riconoscere visivamente nemici e ostacoli sullo schermo, costruendo autonomamente una strategia efficace senza regole hardcoded.",
     features: [
-      "Linguaggi e framework: Python, Jupyter Notebook, PyTorch per deep learning e Stable-Baselines3 per PPO",
-      "Algoritmi RL: DDQN implementazione custom con replay buffer e target network; PPO con configurazioni batch size variabili",
-      "Computer Vision: YOLOv5 per object detection con metriche ~94% precision, 100% recall",
-      "Ambiente: gym-super-mario-bros con wrapper per frame stacking e preprocessing",
-      "Valutazione: metriche quantitative su vittorie/episodi, reward cumulativo, perdita di policy/Q-values",
-      "Output multimediale: video demo e grafici evolutivi di training"
+      "Agente AI che apprende osservando direttamente lo schermo di gioco",
+      "Decisioni autonome e adattive basate su Reinforcement Learning",
+      "Riconoscimento visivo di nemici e ostacoli tramite Computer Vision (YOLOv5)",
+      "Sistema di apprendimento progressivo basato su tentativi ed errori",
+      "Analisi delle performance dell’agente durante le fasi di training",
+      "Video demo e simulazioni reali delle partite giocate dall’intelligenza artificiale"
     ],
     video: "/Mario_Bros_Video_Generation.mp4",
     poster: "/mario-poster.png",
     image: "/mario-poster.png",
   },
   {
-    title: "SportTech DB",
-    category: "Database Design",
+    title: "SportTech Platform",
+    category: "Data Architecture & Automation",
     description:
-      "Complex PostgreSQL database for sports competitions with automated scoring and reporting.",
+      "Un’infrastruttura dati progettata per far funzionare competizioni sportive complesse senza errori, incongruenze o interventi manuali.",
     detailedDescription:
-      "Progettazione e implementazione di un database relazionale completo per la gestione di competizioni sportive, squadre e classifiche, garantendo integrità dei dati e automazione di regole di business.",
+      "SportTech Platform è un sistema backend progettato per gestire in modo rigoroso e automatizzato tutti gli elementi di una competizione sportiva: squadre, partite, risultati, punteggi e classifiche. L’obiettivo non è analizzare i dati, ma farli funzionare correttamente in ogni scenario operativo, garantendo coerenza totale anche in presenza di regole complesse e aggiornamenti continui.",
     problem:
-      "Le competizioni sportive generano un alto volume di dati strutturati: partite, squadre, giocatori, punteggi, classifiche e regole di assegnazione punti. Senza un modello relazionale solido, le informazioni rischiano di essere incoerenti, ridondanti o difficili da interrogare. La sfida tecnica consiste nel progettare una base dati normalizzata che supporti query complesse, regole di business automatizzate e reporting affidabile.",
+      "Nei sistemi sportivi reali, ogni evento ha conseguenze a cascata: una partita aggiorna una classifica, che influisce su ranking, premi o qualificazioni. Quando queste logiche sono gestite manualmente o in modo superficiale, gli errori sono inevitabili. Il vero problema non è memorizzare i dati, ma applicare correttamente le regole del gioco in ogni momento, senza ambiguità o stati incoerenti.",
     solution:
-      "SportTech-Database-Project affronta il problema progettando un database relazionale completo con: modello concettuale (ER) chiaro per tutte le entità principali; modello logico e fisico implementato in PostgreSQL con normalizzazione fino alla 3NF; regole e vincoli di integrità tramite constraint, trigger e stored procedure per automatizzare calcolo punti; query di reportistica automatica. Il progetto è stato testato con dataset simulati dimostrando coerenza dei dati e robustezza del modello.",
+      "La soluzione è stata costruire una struttura dati che incorpora le regole direttamente nel sistema. Attraverso vincoli, trigger e logiche automatiche a livello di database, ogni aggiornamento viene validato, propagato e sincronizzato in tempo reale. Il sistema diventa così una fonte unica e affidabile, capace di gestire classifiche e punteggi senza bisogno di controlli manuali o correzioni a posteriori.",
     features: [
-      "Database: PostgreSQL relazionale con gestione ACID e supporto a query complesse",
-      "Progettazione ER: tabelle normalizzate, relazioni uno-a-molti e molti-a-molti",
-      "Trigger e stored procedure: calcolo automatico punti partita, aggiornamento classifiche, gestione eventi speciali",
-      "Query avanzate: report su performance squadre, statistiche individuali, filtraggio per campionato o stagione",
-      "Script modulari: file SQL per setup rapido e aggiornamenti futuri",
-      "Scalabilità: struttura pronta per nuovi sport, tornei o campionati senza modifiche sostanziali"
+      "Sistema dati progettato per applicare automaticamente le regole delle competizioni",
+      "Aggiornamento istantaneo di punteggi e classifiche a ogni evento",
+      "Eliminazione degli errori manuali tramite logiche automatiche",
+      "Struttura rigorosa pensata per scenari reali e casi limite",
+      "Query strutturate per consultazione e report operativi",
+      "Base solida e scalabile per estensioni future e nuovi regolamenti"
     ],
     image:
       "https://images.unsplash.com/photo-1461896836934-ffe607ba8211?w=800&auto=format",
   },
+
   {
-    title: "City Statistics",
-    category: "Data Analysis",
+    title: "City Intelligence Engine",
+    category: "Urban Data & Decision Making",
     description:
-      "Statistical pipeline in R analyzing OECD urban indicators with clustering for policy insights.",
+      "Un sistema di analisi avanzata che trasforma dati urbani complessi in insight strategici per comprendere, confrontare e pianificare lo sviluppo delle città.",
     detailedDescription:
-      "Analisi avanzata di indicatori socio-economici, demografici e ambientali delle aree urbane funzionali (FUA) dei Paesi OCSE, finalizzata a supportare decisioni di policy basate su dati comparabili.",
+      "City Intelligence Engine è una piattaforma di analisi dei dati urbani progettata per leggere e interpretare le dinamiche economiche, sociali e ambientali delle città. Attraverso l’elaborazione di indicatori internazionali, il sistema consente di confrontare aree urbane diverse, individuare pattern nascosti e supportare decisioni strategiche basate su dati reali e comparabili.",
     problem:
-      "Le decisioni urbanistiche, di sviluppo economico e ambientale richiedono una comprensione approfondita delle differenze tra aree urbane a livello internazionale. Tuttavia, i dataset delle FUA (Functional Urban Areas) dell'OCSE sono spesso complessi, non normalizzati e non immediatamente confrontabili. La sfida tecnica consiste nell'aggregare, normalizzare e analizzare dati multivariati per evidenziare pattern significativi e supportare politiche di pianificazione urbana e sviluppo sostenibile.",
+      "Le città producono enormi quantità di dati, ma spesso queste informazioni rimangono frammentate, difficili da confrontare e poco utilizzabili per decisioni concrete. Indicatori economici, occupazionali e ambientali sono distribuiti su dataset eterogenei, con scale e metriche diverse. Senza un sistema di analisi strutturato, è quasi impossibile capire come una città stia davvero performando rispetto alle altre o quali fattori influenzino il suo sviluppo.",
     solution:
-      "City-Statistics-OECD-FUA-Analysis costruisce una pipeline completa: acquisizione dei dataset OCSE su indicatori economici, demografici e ambientali; pulizia e normalizzazione per garantire consistenza tra paesi; analisi statistica multivariata per correlazioni, trend e outlier; visualizzazione e reportistica per confrontare le FUA rendendo i dati immediatamente interpretabili. Il progetto è stato testato su più FUA verificando coerenza dei dati e robustezza delle analisi statistiche.",
+      "Il progetto affronta il problema costruendo una pipeline di analisi completa che trasforma dati grezzi in conoscenza utilizzabile. Attraverso normalizzazione, analisi statistica multivariata e tecniche di clustering, il sistema individua correlazioni, trend temporali e gruppi di città con caratteristiche simili. Il risultato è una visione chiara e comparabile delle performance urbane, pronta per supportare strategie di sviluppo, sostenibilità e pianificazione.",
     features: [
-      "Linguaggi: R per data cleaning, analisi statistica e visualizzazione (ggplot2, dplyr, tidyr, corrplot)",
-      "Analisi statistica: correlazioni, regressioni multivariate, clustering di FUA, test di significatività",
-      "Gestione dataset complessi: importazione, pulizia, normalizzazione e integrazione multivariata",
-      "Visualizzazione: grafici comparativi tra FUA, mappe tematiche, heatmap per indicatori",
-      "Reportistica: output strutturati per report accademici o policy brief con tabelle e grafici automatizzati",
-      "Reproducibilità: script modulari per pipeline di analisi consentendo facili aggiornamenti"
+      "Analisi comparativa tra città basata su indicatori economici, sociali e ambientali",
+      "Identificazione di pattern e correlazioni nascosti nei dati urbani",
+      "Clustering delle città per individuare modelli di sviluppo simili",
+      "Analisi temporale per monitorare evoluzioni e trend nel tempo",
+      "Visualizzazioni chiare e immediate per supportare decisioni strategiche",
+      "Pipeline riproducibile e scalabile per analisi future e nuovi dataset"
     ],
     image:
       "https://images.unsplash.com/photo-1480714378408-67cf0d13bc1b?w=800&auto=format",
   },
   {
     title: "LLM as Judge",
-    category: "AI Evaluation",
+    category: "AI Evaluation & Quality Control",
     description:
-      "Python framework using GPT-4 and Claude to evaluate chatbot quality with multi-metric analysis.",
+      "Un sistema di valutazione automatica in cui l’intelligenza artificiale analizza, confronta e giudica le risposte di altre AI.",
     detailedDescription:
-      "Framework Python per l'analisi automatica multi-metrica della qualità dei dialoghi tra umani e agenti conversazionali, basato su LLM di nuova generazione (Claude, GPT-4o) e su dataset multipli.",
+      "LLM as Judge è un framework che ribalta il paradigma classico della valutazione: invece di affidarsi a metriche rigide o giudizi umani, utilizza modelli linguistici avanzati come veri e propri giudici. Il sistema analizza dialoghi tra esseri umani e chatbot e produce valutazioni strutturate sulla qualità delle risposte, simulando un processo di giudizio critico simile a quello umano, ma scalabile e riproducibile.",
     problem:
-      "Nel campo dell'elaborazione del linguaggio naturale e dei chatbot, una delle sfide principali è valutare in modo affidabile e riproducibile la qualità delle conversazioni generate dagli agenti rispetto a quella umana. Le tecniche tradizionali si basano su metriche quantitative limitate o annotazioni manuali costose e non scalabili. Il problema tecnico consiste nel creare una metodologia di valutazione automatica e multi-metrica in grado di confrontare le risposte dei modelli conversazionali sfruttando i moderni modelli linguistici come giudici critici.",
+      "Valutare la qualità di un chatbot è uno dei problemi più complessi dell’AI moderna. Le risposte possono essere corrette ma inutili, fluenti ma fuorvianti, educate ma incoerenti. Le metriche automatiche tradizionali non colgono queste sfumature, mentre la valutazione umana è lenta, costosa e impossibile da scalare. Senza un sistema affidabile di giudizio, migliorare o confrontare modelli conversazionali diventa una scommessa.",
     solution:
-      "LLM-Eval-Analysis propone un framework di valutazione in due fasi: Fase 1 confronta modelli (Claude 3, Claude 3.5, GPT-4o, GPT-4o-mini) su dataset ConvAI2 per misurare la capacità dei LLM giudici di replicare valutazioni umane; Fase 2 analizza l'effetto della struttura del dataset (FED, PC, TC, DSTC9). La valutazione utilizza metriche come accuracy, Cohen's Kappa, Pearson, Spearman e Kendall-Tau. La soluzione dimostra come i LLM configurati come giudici offrano valutazioni meno soggettive e più scalabili.",
+      "Il progetto introduce un approccio radicale: usare l’AI stessa come strumento di valutazione. Modelli linguistici avanzati vengono impiegati come giudici critici, capaci di confrontare risposte, analizzare coerenza, pertinenza e qualità del dialogo. Il framework supporta valutazioni multi-dimensionali e confronti tra modelli diversi, offrendo una misura più realistica e consistente della qualità conversazionale rispetto alle metriche tradizionali.",
     features: [
-      "Ambiente: Python 3 con gestione dipendenze tramite venv e configurazione API via .env",
-      "LLM giudici: integrazione API OpenAI (GPT-4o, GPT-4o-mini) e Anthropic (Claude 3, 3.5)",
-      "Datasets: ConvAI2 e benchmark strutturati (FED, PC, TC, DSTC9) per scenari differenti",
-      "Metriche statistiche: Pearson, Spearman, Kendall-Tau, Cohen's Kappa per quantificare qualità",
-      "Analisi comparativa: confronto performance di valutazione su modelli e dataset diversi",
-      "Report quantitativi: output per supportare decisioni su modelli LLM e dataset ottimali"
+      "AI che valuta altre AI in modo automatico e riproducibile",
+      "Analisi qualitativa delle risposte conversazionali, non solo numerica",
+      "Confronto diretto tra modelli linguistici diversi",
+      "Riduzione drastica della dipendenza da valutazioni umane manuali",
+      "Sistema scalabile per test su grandi volumi di conversazioni",
+      "Output strutturati per guidare decisioni su modelli e strategie AI"
     ],
     image:
       "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800&auto=format",
   },
   {
-    title: "Applied Statistics",
-    category: "Statistical Modeling",
+    title: "Statistical Intelligence",
+    category: "Data Analysis & Decision Support",
     description:
-      "Complex dataset analysis with inferential modeling, regressions and advanced R visualization.",
+      "Un progetto di analisi statistica avanzata che trasforma dati complessi in insight affidabili per comprendere e prevedere fenomeni reali.",
     detailedDescription:
-      "Studio statistico completo per identificare pattern, correlazioni e trend significativi in dataset complessi di natura socio-economica e ambientale, con validazione di ipotesi tramite tecniche quantitative avanzate.",
+      "Statistical Intelligence è un progetto di analisi quantitativa progettato per estrarre significato da dati complessi e multidimensionali. Attraverso modelli statistici rigorosi e visualizzazioni chiare, il sistema consente di individuare relazioni, trend e segnali nascosti all’interno di dataset socio-economici e ambientali, fornendo una base solida per interpretazioni corrette e decisioni informate.",
     problem:
-      "I dataset socio-economici e ambientali spesso presentano grande complessità e variabilità: variabili continue e categoriche, dati mancanti, scale differenti e relazioni non lineari. Il problema tecnico principale consiste nell'estrarre insight significativi preservando la validità statistica, evitando errori di interpretazione e garantendo riproducibilità delle analisi.",
+      "Quando i dati aumentano di volume e complessità, il rischio principale non è la mancanza di informazioni, ma l’interpretazione sbagliata. Correlazioni apparenti, variabili confondenti e modelli mal calibrati possono portare a conclusioni fuorvianti. Senza un approccio statistico rigoroso, i numeri raccontano storie convincenti… ma spesso sbagliate.",
     solution:
-      "Il progetto applica metodologie statistiche avanzate per: pulizia e normalizzazione dei dati per garantire coerenza; analisi esplorativa per individuare pattern preliminari e anomalie; applicazione di modelli statistici inferenziali e multivariati per testare ipotesi; validazione dei risultati con tecniche standard di significatività statistica. La soluzione è stata verificata su dataset reali e simulati, dimostrando accuratezza, robustezza e replicabilità dei risultati.",
+      "Il progetto affronta il problema applicando un processo strutturato di analisi statistica: dalla pulizia e normalizzazione dei dati, all’esplorazione visiva, fino alla costruzione e validazione di modelli inferenziali. Ogni risultato viene verificato attraverso metriche statistiche consolidate, riducendo il rischio di bias e garantendo che le conclusioni siano supportate dai dati e non da intuizioni arbitrarie.",
     features: [
-      "Linguaggio: R per data cleaning, modellazione statistica e visualizzazione",
-      "Data preprocessing: gestione dati mancanti, scaling, codifica variabili categoriche",
-      "Analisi esplorativa: statistiche descrittive, distribuzioni, outlier detection, scatterplot e boxplot",
-      "Modelli statistici: regressione lineare/multipla, ANOVA, correlazione (Pearson, Spearman), clustering, PCA",
-      "Visualizzazione: grafici comparativi, heatmap di correlazione, diagrammi multivariati",
-      "Reproducibilità: script modulari per pipeline completa consentendo aggiornamenti rapidi"
+      "Analisi statistica rigorosa per evitare interpretazioni fuorvianti",
+      "Modelli inferenziali per identificare relazioni reali tra le variabili",
+      "Valutazione dell’affidabilità dei risultati tramite metriche statistiche",
+      "Visualizzazioni chiare per rendere comprensibili fenomeni complessi",
+      "Gestione strutturata di dati eterogenei e multivariati",
+      "Pipeline riproducibile per analisi consistenti nel tempo"
     ],
     image:
       "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&auto=format",
@@ -140,86 +141,86 @@ const projects = [
     title: "AedesTravel",
     category: "SaaS Platform",
     description:
-      "Piattaforma SaaS end-to-end per property manager che automatizza gestione, check-in/out e comunicazione con ospiti, integrata con Chatbot AI.",
+      "Piattaforma SaaS progettata per automatizzare e centralizzare la gestione di affitti brevi, riducendo operazioni manuali e migliorando l’esperienza di host e ospiti.",
     detailedDescription:
-      "Piattaforma SaaS end-to-end per property manager e proprietari di case vacanza, che automatizza gestione, check-in/out e comunicazione con ospiti, integrando strumenti di marketing, analytics e servizi turistici e molto altro ancora, integrata con Chatbot AI, una rivoluzione nel settore.",
+      "AedesTravel è una piattaforma SaaS end-to-end pensata per property manager e proprietari di case vacanza che gestiscono più immobili. Il sistema centralizza prenotazioni, comunicazioni, check-in/check-out e analisi operative in un’unica interfaccia, integrando automazioni intelligenti per semplificare i flussi quotidiani e ridurre il carico operativo.",
     problem:
-      "I proprietari di immobili e i property manager di affitti brevi affrontano una complessità operativa elevata: coordinamento delle prenotazioni, gestione check-in/out, comunicazione con ospiti, ottimizzazione delle tariffe, monitoraggio recensioni e manutenzione. Gli strumenti tradizionali sono spesso frammentati (OTA separati, fogli Excel, app multiple), richiedono intervento manuale continuo e generano inefficienze. La sfida tecnica consiste nel centralizzare tutte le operazioni di gestione di più immobili in un'unica piattaforma scalabile, mantenendo controllo, sicurezza dei dati e automazioni avanzate.",
+      "La gestione di affitti brevi su più canali comporta un’elevata complessità operativa: prenotazioni distribuite su OTA diverse, comunicazioni frammentate con gli ospiti, check-in manuali, monitoraggio delle recensioni e aggiornamento continuo delle tariffe. L’utilizzo di strumenti separati porta a inefficienze, errori e perdita di tempo, rendendo difficile scalare il numero di immobili mantenendo qualità e controllo.",
     solution:
-      "AEDES Travel affronta questo problema con una piattaforma SaaS integrata, che permette: gestione automatizzata dei check-in e check-out tramite dispositivi smart compatibili con Alexa e altre tecnologie IoT; comunicazione con ospiti tramite chatbot AI e messaggistica centralizzata; dashboard per proprietari e property manager con analytics in tempo reale su prenotazioni, ricavi e performance degli immobili; creazione di itinerari personalizzati per turisti, promozione di pacchetti viaggio e sconti con partner locali; gestione della reputazione e monitoraggio recensioni. La soluzione è stata validata in scenari reali di gestione di immobili in diverse città italiane, dimostrando riduzione dei tempi operativi, maggiore soddisfazione degli ospiti e maggiore rendimento per i proprietari.",
+      "AedesTravel affronta queste criticità con una piattaforma integrata che automatizza i processi chiave della gestione immobiliare. Il sistema coordina check-in e check-out tramite dispositivi smart, centralizza la comunicazione con gli ospiti tramite chatbot AI e fornisce dashboard analitiche in tempo reale per monitorare performance, occupazione e ricavi. L’architettura è progettata per scalare su più immobili mantenendo sicurezza, affidabilità e controllo operativo.",
     features: [
-      "Piattaforma SaaS: accessibile da web e mobile con interfaccia intuitiva e responsive",
-      "Automazioni IoT: check-in/out automatici, controllo dispositivi smart, gestione accessi e notifiche in tempo reale",
-      "Intelligenza artificiale: chatbot per assistenza turisti, generazione di itinerari personalizzati, analisi recensioni",
-      "Dashboard proprietari: analytics dettagliati su prenotazioni, ricavi, occupazione e performance degli immobili",
-      "Gestione OTA e canali diretti: integrazione con portali di affitti brevi e gestione centralizzata delle tariffe",
-      "Community e servizi aggiuntivi: promozione di pacchetti viaggio, sconti e partnership locali",
-      "Sicurezza e scalabilità: gestione dati separata per ogni immobile, crittografia e estensione multi-proprietà"
+      "Piattaforma SaaS web e mobile con interfaccia unificata per la gestione di più immobili",
+      "Automazione check-in/check-out tramite dispositivi smart e integrazioni IoT",
+      "Chatbot AI per comunicazione centralizzata con gli ospiti e supporto operativo",
+      "Dashboard analitiche in tempo reale su prenotazioni, ricavi e tasso di occupazione",
+      "Integrazione con OTA e canali diretti per la gestione centralizzata delle tariffe",
+      "Architettura scalabile e sicura, progettata per property manager multi-immobile"
     ],
-    image:
-      "/aedes-travel-logo.png",
+    image: "/aedes-travel-logo.png",
   },
+
   {
-    title: "CityWander",
-    category: "Mobile Tourism",
+    title: "CityWander – Interactive City Experience",
+    category: "Smart Tourism & Mobile Experience",
     description:
-      "Applicazione turistica mobile che combina percorsi personalizzati, gamification, geofencing e riconoscimento immagini per arricchire l'esperienza di visita.",
+      "Un’app mobile che trasforma una città in un’esperienza interattiva, combinando percorsi personalizzati, gamification e tecnologie smart basate sulla posizione.",
     detailedDescription:
-      "Applicazione turistica mobile che combina percorsi personalizzati, gamification, geofencing e riconoscimento immagini per arricchire l'esperienza di visita in città.",
+      "CityWander è una piattaforma mobile progettata per trasformare il modo in cui le persone esplorano una città. L’app guida l’utente attraverso percorsi dinamici e personalizzati, arricchendo l’esperienza di visita con contenuti contestuali, sfide interattive e meccaniche di gioco. La città non è più una mappa statica, ma un ambiente vivo che reagisce alla presenza dell’utente.",
     problem:
-      "I visitatori e i turisti spesso trovano difficile scoprire in modo efficace e coinvolgente i luoghi di interesse di una città: le soluzioni tradizionali richiedono ricerche manuali, mappe disgiunte e multiple app. Dal punto di vista tecnico, il problema consiste nel fornire percorsi di visita dinamici e personalizzati che integrino informazioni geografiche, punti di interesse locali e coinvolgimento attivo dell'utente, senza dipendere da soluzioni statiche e poco interattive.",
+      "Visitare una città spesso significa muoversi tra mappe generiche, guide frammentate e informazioni scollegate tra loro. L’esperienza risulta passiva, poco coinvolgente e spesso distante dal contesto reale in cui ci si trova. Il problema non è la mancanza di informazioni, ma l’assenza di un sistema che le renda rilevanti, tempestive e coinvolgenti nel momento giusto.",
     solution:
-      "CityWander affronta questo problema con una app mobile progettata per il turismo urbano, focalizzata sulla città di Salerno, che offre funzioni di tour personalizzati, meccaniche di gamification per incentivare l'esplorazione, utilizzo di geofencing per attivare contenuti in base alla posizione e moduli di riconoscimento immagini per arricchire il profilo del luogo visitato. In questo modo l'esperienza turistica diventa più immersiva, interattiva e contestuale, aumentando la visibilità delle attrazioni locali e la partecipazione degli utenti alla scoperta di luoghi e attività.",
+      "CityWander risolve questo limite trasformando lo spazio urbano in un’esperienza interattiva guidata dalla tecnologia. Grazie al geofencing, l’app attiva contenuti in base alla posizione reale dell’utente, mentre la gamification stimola l’esplorazione attraverso obiettivi, ricompense e progressi. L’integrazione di moduli di riconoscimento visivo consente inoltre di arricchire l’esperienza con informazioni contestuali, rendendo ogni visita unica, immersiva e memorabile.",
     features: [
-      "Architettura mobile full-stack: frontend mobile (Flutter/Dart multiplatform) e backend REST API (Spring Boot)",
-      "Gamification: percorsi interattivi, punti esperienza, badge e progressi visitatore per stimolare esplorazione continua",
-      "Geofencing: rilevamento posizione per attivare contenuti turistici in base alla prossimità di attrazioni e POI",
-      "Riconoscimento immagini: riconoscimento elementi visivi del contesto urbano per informazioni arricchite e contestuali",
-      "Database: PostgreSQL per memorizzare tour, punti d'interesse, profili utente e dati di engagement",
-      "CI/CD: pipeline GitLab CI/CD per automazione di build e rilascio continuo"
+      "Esperienze di visita personalizzate e dinamiche",
+      "Gamification per incentivare l’esplorazione urbana",
+      "Geofencing per contenuti attivati in tempo reale in base alla posizione",
+      "Riconoscimento visivo per arricchire l’esperienza sul campo",
+      "Architettura mobile scalabile e multipiattaforma",
+      "Sistema pensato per valorizzare territori, attività e punti di interesse"
     ],
     image:
       "/citywander.webp",
   },
   {
-    title: "Classify",
-    category: "OCR Technology",
+    title: "Classify – Smart Space Recognition",
+    category: "Computer Vision & Augmented Reality",
     description:
-      "App mobile per la scansione intelligente di documenti accademici con riconoscimento ottico del testo.",
+      "Un’app mobile che riconosce ambienti fisici in tempo reale e li trasforma in informazioni digitali accessibili con una semplice scansione.",
     detailedDescription:
-      "App mobile per la scansione intelligente di documenti accademici con riconoscimento ottico del testo.",
+      "Classify è un’app mobile progettata per collegare il mondo fisico ai dati digitali. Attraverso la fotocamera dello smartphone, l’app riconosce aule, laboratori e uffici, restituendo in tempo reale informazioni contestuali come disponibilità degli spazi, lezioni in corso e orari dei docenti. L’obiettivo è rendere gli ambienti intelligenti, informativi e immediatamente comprensibili per chi li vive.",
     problem:
-      "In molti contesti universitari e accademici gli studenti e i docenti si trovano a gestire grandi quantità di materiale cartaceo: dispense, appunti, schede esercizi e riferimenti bibliografici. La digitalizzazione di questi documenti è spesso macchinosa o richiede strumenti esterni poco intuitivi. Il problema tecnico principale è implementare una pipeline di scansione robusta che acquisisca immagini da fotocamera, applichi OCR di alta qualità e restituisca testo leggibile, indicizzabile e pronto per essere ricercato o archiviato.",
+      "Negli ambienti complessi come campus, edifici pubblici o strutture condivise, le informazioni sono spesso frammentate: orari, disponibilità degli spazi e attività in corso non sono immediatamente visibili o aggiornate. Questo genera confusione, perdita di tempo e continui passaggi tra app, siti o bacheche fisiche. Il problema non è la mancanza di dati, ma l’assenza di un accesso rapido e contestuale a quelle informazioni.",
     solution:
-      "Classify affronta questo problema attraverso un'applicazione mobile che integra funzionalità di acquisizione immagine, pre-elaborazione dei documenti e OCR, permettendo all'utente di scansionare velocemente qualsiasi pagina e ottenere testo digitale con layout preservato. La soluzione è stata verificata tramite l'utilizzo su più dataset di immagini documentali e test di accuratezza OCR in scenari reali (fotocamere smartphone, condizioni di luce variabili). Il fork migliora e adatta il progetto originale puntando su usabilità per studenti e ricercatori.",
+      "Classify risolve il problema trasformando lo spazio fisico in un’interfaccia interattiva. Grazie alla Computer Vision e all’OCR, l’app riconosce targhe, cartelli e ambienti reali, mentre l’integrazione con sistemi informativi consente di recuperare dati aggiornati in tempo reale. L’uso della realtà aumentata rende l’esperienza immediata e intuitiva: basta inquadrare uno spazio per sapere cosa sta succedendo lì, ora.",
     features: [
-      "Piattaforma: Applicazione mobile (React Native / Flutter / Android nativo)",
-      "OCR integrato: Libreria Tesseract OCR per riconoscimento automatico caratteri da immagini acquisite",
-      "Preprocessing immagini: binarizzazione, rilevamento contorni, ritaglio automatico e correzione prospettica",
-      "Interfaccia utente: schermate per acquisizione multipagina, visualizzazione anteprima, salvataggio/esportazione",
-      "Flusso ottimizzato: dalla foto alla conversione testo con semplice tapping e ritocco manuale risultato"
+      "Riconoscimento visivo di ambienti e spazi tramite fotocamera",
+      "OCR per l’estrazione intelligente di informazioni da targhe e segnali fisici",
+      "Accesso in tempo reale a orari, disponibilità e attività in corso",
+      "Integrazione con sistemi informativi tramite API",
+      "Esperienza interattiva basata su realtà aumentata",
+      "Architettura mobile multipiattaforma pronta per ambienti complessi"
     ],
     image:
       "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=800&auto=format",
   },
   {
-    title: "AI Trading Bot",
-    category: "Financial Technology",
+    title: "AI Trading System",
+    category: "AI & Financial Automation",
     description:
-      "Expert Advisor ibrido per MetaTrader 5 che integra segnali tecnici tradizionali e predizioni AI per trading ad alta frequenza nel Forex.",
+      "Un sistema di trading automatizzato che combina intelligenza artificiale e logiche finanziarie avanzate per prendere decisioni operative in tempo reale sui mercati.",
     detailedDescription:
-      "Expert Advisor ibrido per MetaTrader 5 che integra segnali tecnici tradizionali e predizioni AI, ottimizzato per strategie di trading ad alta frequenza nel mercato Forex.",
+      "AI Trading System è un motore di trading intelligente progettato per operare in modo completamente automatico sui mercati finanziari. Il sistema analizza continuamente il comportamento dei prezzi, individua pattern rilevanti e decide autonomamente quando entrare o uscire dal mercato. L’obiettivo non è eseguire semplici regole statiche, ma costruire una strategia adattiva che unisca disciplina operativa e capacità predittiva.",
     problem:
-      "Le strategie di trading ad alta frequenza (HFT) nel Forex richiedono decisioni rapide basate su pattern di mercato spesso complessi e rumorosi. La sfida tecnica consiste nel: 1) Generare segnali affidabili in tempo reale. 2) Integrare previsioni AI per anticipare movimenti di prezzo. 3) Automatizzare l'esecuzione di trade minimizzando slippage e rischi, senza intervento umano costante. L'approccio classico basato solo su indicatori tecnici può non essere sufficiente per sfruttare micro-opportunità di mercato, mentre le predizioni AI permettono di anticipare trend nascosti nei dati storici.",
+      "Il trading sui mercati finanziari richiede velocità, precisione e controllo emotivo. Le decisioni manuali sono lente, soggette a bias umani e difficili da replicare con coerenza nel tempo. Inoltre, i mercati sono rumorosi e imprevedibili: basarsi esclusivamente su regole rigide o su intuizioni personali espone a rischi elevati e risultati incoerenti.",
     solution:
-      "AI-Enhanced-HFT combina strategie classiche e machine learning per creare un Expert Advisor ibrido: utilizzo di indicatori tecnici come EMA e ADX per segnali di ingresso/uscita; modelli di previsione AI (XGBoost, Random Forest, LSTM) per stimare il movimento dei prezzi su finestre temporali brevi; integrazione dei segnali in un EA MetaTrader 5, testato in backtest e demo trading per verificare efficacia e stabilità. I test mostrano che l'EA riesce a generare trade coerenti con le previsioni dei modelli, migliorando il rapporto rischio/rendimento rispetto a strategie basate solo su indicatori tecnici.",
+      "Il sistema affronta questa complessità integrando intelligenza artificiale e automazione operativa in un’unica architettura. Le decisioni di trading vengono prese combinando analisi tecnica e modelli predittivi AI, che stimano la probabilità di movimenti di prezzo a breve termine. L’intelligenza artificiale non sostituisce la strategia, ma la rafforza: il sistema modula l’esposizione al rischio in base al livello di confidenza delle previsioni, mantenendo un controllo rigoroso sulle operazioni.",
     features: [
-      "Piattaforma: MetaTrader 5 per gestione ordini, esecuzione automatica e backtesting",
-      "Linguaggi: MQL5 per EA; Python per modelli AI e calcolo predizioni",
-      "Modelli AI: XGBoost/Random Forest per previsioni breve termine; LSTM per analisi sequenziale e trend detection",
-      "Integrazione realtime: socket o API per collegare predizioni Python con EA MQL5",
-      "Backtesting: simulazioni su dati storici con metriche (drawdown, profit factor, win rate)",
-      "Parametrizzazione: modifica periodi EMA/ADX, soglie di segnale e parametri AI senza ricompilare"
+      "Sistema di trading completamente automatizzato, operativo in tempo reale",
+      "Integrazione di modelli di intelligenza artificiale per supportare le decisioni",
+      "Gestione dinamica del rischio basata sul livello di confidenza del sistema",
+      "Architettura ibrida che combina regole finanziarie e modelli predittivi",
+      "Backtesting avanzato per la validazione delle strategie su dati storici",
+      "Struttura modulare pronta per estensioni e nuovi modelli AI"
     ],
     image:
       "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=800&auto=format",
@@ -366,25 +367,21 @@ const ProjectModal = ({
     <AnimatePresence>
       {isOpen && (
         <>
-          {/* Backdrop */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          onClick={onClose}
+          className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4 md:p-8"
+        >
           <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            onClick={onClose}
-            className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50"
-          />
-          
-          {/* Modal */}
-          <div className="fixed inset-0 z-50 flex items-center justify-center p-4 md:p-8">
-            <motion.div
-              initial={{ opacity: 0, scale: 0.9, y: 20 }}
-              animate={{ opacity: 1, scale: 1, y: 0 }}
-              exit={{ opacity: 0, scale: 0.9, y: 20 }}
-              transition={{ type: "spring", damping: 25, stiffness: 300 }}
-              className="relative w-full max-w-4xl max-h-[90vh] overflow-y-auto bg-card border border-border rounded-2xl shadow-2xl"
-              onClick={(e) => e.stopPropagation()}
-            >
+            initial={{ opacity: 0, scale: 0.9, y: 20 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            exit={{ opacity: 0, scale: 0.9, y: 20 }}
+            transition={{ type: "spring", damping: 25, stiffness: 300 }}
+            className="relative w-full max-w-4xl max-h-[90vh] overflow-y-auto hide-scrollbar bg-card border border-border rounded-2xl shadow-2xl"
+            onClick={(e) => e.stopPropagation()}
+          >
               {/* Close Button */}
               <button
                 onClick={onClose}
@@ -469,7 +466,7 @@ const ProjectModal = ({
                 </div>
               </div>
             </motion.div>
-          </div>
+          </motion.div>
         </>
       )}
     </AnimatePresence>
@@ -479,6 +476,22 @@ const ProjectModal = ({
 const WorkSection = () => {
   const [selectedProject, setSelectedProject] = useState<typeof projects[0] | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  useEffect(() => {
+    if (isModalOpen) {
+      document.body.style.overflow = "hidden";
+      document.body.style.touchAction = "none";
+    } else {
+      document.body.style.overflow = "";
+      document.body.style.touchAction = "";
+    }
+
+    return () => {
+      document.body.style.overflow = "";
+      document.body.style.touchAction = "";
+    };
+  }, [isModalOpen]);
+
+
 
   const handleCardClick = (project: typeof projects[0]) => {
     setSelectedProject(project);
@@ -495,7 +508,19 @@ const WorkSection = () => {
       id="work"
       className="py-32 px-6 md:px-12 bg-background border-t border-border relative"
     >
-      <div className="section-label">[ 01. SELECTED WORKS ]</div>
+      {/* <div className="section-label">[ 01. SELECTED WORKS ]</div> */}
+
+      {/* Section Header */}
+      <div className="text-center mb-12 mx-auto">
+        <h2 className="text-4xl md:text-5xl lg:text-6xl font-display font-bold mb-4 md:whitespace-nowrap">
+          Soluzioni <span className="text-gradient">reali</span>, risultati{" "}
+          <span className="text-gradient">concreti</span>
+        </h2>
+        <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+          Progetti sviluppati per affrontare problemi complessi con approcci data-driven.
+        </p>
+      </div>
+
 
       <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 pt-12">
         {projects.map((project, index) => (
@@ -514,6 +539,7 @@ const WorkSection = () => {
         onClose={handleCloseModal}
       />
     </section>
+
   );
 };
 

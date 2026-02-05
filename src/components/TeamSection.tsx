@@ -17,7 +17,7 @@ const team = [
   {
     name: "Marco Di Maio",
     role: "Data Scientist & ML Engineer",
-    bio: "Sviluppa soluzioni data-driven solide e utilizzabili. Esperto nel trasformare dati complessi in dashboard chiare e strumenti di supporto decisionale.",
+    bio: "Sviluppa soluzioni data-driven che uniscono solidità tecnica e semplicità d’uso. Specializzato nel trasformare dati e modelli complessi in strumenti chiari e immediatamente utili per il supporto decisionale.",
     image: "/marco-dimaio.jpg",
   },
 ];
@@ -28,7 +28,7 @@ const TeamSection = () => {
       id="team"
       className="py-32 px-6 md:px-12 bg-background border-t border-border relative"
     >
-      <div className="section-label">[ 02. THE LAB ]</div>
+      {/* <div className="section-label">[ 02. THE LAB ]</div> */}
 
       <div className="max-w-6xl mx-auto pt-12">
         <motion.h2
@@ -48,8 +48,8 @@ const TeamSection = () => {
           transition={{ duration: 0.8, delay: 0.1 }}
           className="text-muted-foreground text-center mb-16 max-w-xl mx-auto"
         >
-          Three minds, one vision. We combine diverse expertise to deliver
-          exceptional digital solutions.
+          Tre competenze, una visione condivisa. Uniamo esperienze diverse per progettare soluzioni digitali solide, efficaci e su misura.
+
         </motion.p>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">

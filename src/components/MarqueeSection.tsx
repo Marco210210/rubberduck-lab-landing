@@ -12,7 +12,7 @@ const MarqueeSection = () => {
 
   return (
     <section className="py-20 bg-background border-t border-border relative overflow-hidden">
-      <div className="section-label">[ 04. INFINITE SCROLL ]</div>
+      {/* <div className="section-label">[ 04. INFINITE SCROLL ]</div> */}
 
       <div className="marquee-container overflow-hidden hoverable">
         <div className="marquee-track">

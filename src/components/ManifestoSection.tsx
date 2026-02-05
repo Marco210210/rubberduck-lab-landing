@@ -3,12 +3,26 @@ import { Zap, Workflow, Boxes, X } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 
 const ManifestoSection = () => {
-  const text =
-    "We craft digital experiences that defy expectations. Smart. Scalable. Significant.";
+  const text = "Meno operazioni manuali. Più controllo. Automazioni intelligenti progettate per crescere con il tuo business.";
   const words = text.split(" ");
 
   const [selectedAutomation, setSelectedAutomation] = useState<typeof automationServices[0] | null>(null);
   const [currentIndex, setCurrentIndex] = useState(0);
+  useEffect(() => {
+    if (selectedAutomation) {
+      document.body.style.overflow = "hidden";
+      document.body.style.touchAction = "none";
+    } else {
+      document.body.style.overflow = "";
+      document.body.style.touchAction = "";
+    }
+
+    return () => {
+      document.body.style.overflow = "";
+      document.body.style.touchAction = "";
+    };
+  }, [selectedAutomation]);
+
   const sliderRef = useRef<HTMLDivElement>(null);
 
   const automationServices = [
@@ -175,16 +189,16 @@ const ManifestoSection = () => {
   }, []);
 
   return (
-    <section className="py-32 px-6 bg-background border-t border-border relative flex flex-col items-center justify-center min-h-screen">
-      <div className="section-label">[ 05. MANIFESTO ]</div>
+    <section id="automations" className="py-32 px-6 bg-background border-t border-border relative flex flex-col items-center justify-center min-h-screen">
+      {/* <div className="section-label">[ 05. MANIFESTO ]</div> */}
 
       {/* Section Header */}
       <div className="text-center mb-8 max-w-2xl mx-auto">
         <h3 className="text-4xl md:text-5xl lg:text-6xl font-display font-bold mb-4">
-          AI Automation <span className="text-gradient">Solutions</span>
+          Soluzioni di <span className="text-gradient">Automazione AI</span>
         </h3>
         <p className="text-xl md:text-2xl text-muted-foreground">
-          Automate any business process with our AI-powered workflow solutions.
+          Automatizziamo i processi aziendali con workflow intelligenti basati sull’intelligenza artificiale.
         </p>
       </div>
 
@@ -330,8 +344,9 @@ const ManifestoSection = () => {
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.9, opacity: 0 }}
               onClick={(e) => e.stopPropagation()}
-              className="bg-background border border-border rounded-2xl max-w-4xl w-full max-h-[90vh] overflow-y-auto relative"
+              className="relative w-full max-w-4xl max-h-[90vh] overflow-y-auto hide-scrollbar bg-background border border-border rounded-2xl shadow-2xl"
             >
+
               {/* Close button */}
               <button
                 onClick={() => setSelectedAutomation(null)}
